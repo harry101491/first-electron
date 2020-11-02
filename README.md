@@ -4,7 +4,7 @@ A Test Electron Application for learning electron framework.
 
 ## Authors
 
-* **Harshit Pareek** - *Software Engineer* - :sunglasses: :computer:
+* **Harshit Pareek** - *Full Stack Engineer* - :sunglasses: :computer:
 
 ## License
 
