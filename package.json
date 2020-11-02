@@ -1,0 +1,14 @@
+{
+  "name": "first-electron",
+  "version": "1.0.0",
+  "description": "first electron application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "harshit pareek",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  }
+}
