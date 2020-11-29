@@ -1,6 +1,6 @@
 # First Electron Application 
 
-A Test Electron Application for learning electron framework.
+An Electorn Application for Learning the features in electron.
 
 ## Authors
 
