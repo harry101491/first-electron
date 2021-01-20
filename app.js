@@ -2,7 +2,7 @@ const { app, BrowserWindow }  = require('electron');
 // const bcrypt = require('bcrypt');
 // const colors = require('colors');
 
-let win;
+let win, secWin;
 // setTimeout(() => {
 //     console.log('Checking App is ready:' + app.isReady());
 // }, 2000);
@@ -20,11 +20,43 @@ const createWindow = () => {
         webPreferences: {
             nodeIntegration: true
         },
-        backgroundColor: 'white'
+        // titleBarStyle: 'hidden',
+        // frame: false
+    });
+
+    secWin = new BrowserWindow({
+        width: 600,
+        height: 400,
+        webPreferences: {
+            nodeIntegration: true
+        },
+        // parent: win,
+        // modal: true,
+        // show: false
     });
 
     win.loadFile('index.html');
-    win.webContents.openDevTools();
+    secWin.loadFile('index.html');
+
+    win.on('closed', () => {
+        win = null;
+    });
+
+    secWin.on('closed', () => {
+        win.maximize();
+    });
+    
+    // setTimeout(() => {
+    //     secWin.show();
+    //     setTimeout(() => {
+    //         secWin.hide();
+    //     }, 1000);
+    // }, 2000);
+    // secWin.on('closed', () => {
+    //     secWin = null;
+    // });
+
+    // win.webContents.openDevTools();
 
     // win.once('ready-to-show', win.show);
     // win.loadURL('https://google.com');
@@ -38,9 +70,21 @@ app.on('ready', () => {
     // console.log('UserData :', app.getPath('userData'));
     // console.log('Desktop :', app.getPath('desktop'));
     // console.log('Music :', app.getPath('music'));
-    app.setName('Electron Udemy');
-    console.log('Name of App: ', app.getName());
+    // app.setName('Electron Udemy');
+    // console.log('Name of App: ', app.getName());
     createWindow();
+});
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
 });
 
 // Using instance method to quit the app after some time
@@ -63,15 +107,3 @@ app.on('ready', () => {
 // app.on('browser-window-focus', () => {
 //     console.log('window focused');
 // });
-
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
-
-app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
-    }
-});

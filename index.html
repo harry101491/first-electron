@@ -5,14 +5,18 @@
     <title>Hello World!</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
-<body>
+<body>  <!-- style="user-select: none; -webkit-app-region: drag; padding-top: 20px;" -->
     <h1>Hello World!</h1>
-    We are using node 
+    We are using node
     <script>
         require('./renderer')
         document.write(process.versions.node)
     </script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+<!-- 
+    <br>
+    <br>
+    <input type="range" name="range" min="0" max="10" style="-webkit-app-region: no-drag;"/> -->
 </body>
 </html>
