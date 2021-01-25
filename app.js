@@ -1,9 +1,10 @@
-const { app, BrowserWindow }  = require('electron');
+const { app, BrowserWindow, webContents }  = require('electron');
 
 
-let win, secWin;
+let mainWin;
+
 const createWindow = () => {
-    win = new BrowserWindow({
+    mainWin = new BrowserWindow({
         width: 900,
         height: 600,
         webPreferences: {
@@ -11,13 +12,54 @@ const createWindow = () => {
         },
     });
 
-    win.loadFile('index.html');
+    let wc = mainWin.webContents;
+    // console.log('Web content is: ', webContents.getAllWebContents());
 
-    win.on('closed', () => {
+    mainWin.loadFile('index.html');
+    
+    // Context Menu
+    wc.on('context-menu', (e, params) => {
+        // console.log(`Conext Menu clicked on ${params.mediaType} the x: ${params.x} and y: ${params.y}`);
+        let selectedText = params.selectionText;
+        wc.executeJavaScript(`alert(${selectedText})`);
+    });
+    
+    
+    // mainWin.loadURL('https://httpbin.org/basic-auth/user/passwd');
+
+    // wc.on('login', (e, request, authInfo, callback) => {
+    //     console.log('Inside login event', request);
+    //     callback('user', 'passwd');
+    // });
+
+    // wc.on('did-navigate', (e, url, statusCode, message) => {
+    //     console.log(`The Loaded Content: ${url}`);
+    //     console.log(statusCode);
+    // });
+
+    // wc.on('before-input-event', (e, input) => {
+    //     console.log(`Event ${input.key} : ${input.type}`);
+    // });
+    
+    // wc.on('new-window', (e, url) => {
+    //     console.log(`The url came here is: ${url}`);
+    // });
+
+    // wc.on('did-finish-load', () => {
+    //     // when dom is ready that doesn't mean all the content has loaded
+    //     console.log('Content Loaded');
+    // });
+    
+    // wc.on('dom-ready', () => {
+    //     // when dom is ready that doesn't mean all the content has loaded
+    //     console.log('DOM is ready');
+    // });
+
+    mainWin.on('closed', () => {
         win = null;
     });
 
-    win.webContents.openDevTools();
+    // mainWin.webContents.openDevTools();
 }
 
 app.on('ready', () => {
