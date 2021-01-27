@@ -7,16 +7,46 @@
 </head>
 <body>  <!-- style="user-select: none; -webkit-app-region: drag; padding-top: 20px;" -->
     <h1>Hello World!</h1>
-    We are using node
+    <img width="100%" src="" id="screenshot-img" />
+    <button id="screenshot-button">Capture Screenshot</button>
+    <!-- <img src="https://placekitten.com/450/300" alt=""/>
+    <button onclick="zoomUp()">Increase Zoom</button>
+    <button onclick="zoomDown()">Decrease Zoom</button>
+    <button onclick="zoomReset()">Reset Zoom</button> -->
+    <!-- <h3><a href="https://developer.mozilla.org" target="_blank">New Window</a></h3> -->
+    <!-- <h3><a href="#" onclick="newWin()">New Window</a></h3>
+    <h3><a href="#" onclick="closeWin()">Close Window</a></h3>
+    <h3><a href="#" onclick="badFont()">Change Font</a></h3> -->
     <script>
-        require('./renderer')
-        document.write(process.versions.node)
-    </script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-<!-- 
-    <br>
-    <br>
-    <input type="range" name="range" min="0" max="10" style="-webkit-app-region: no-drag;"/> -->
+        // let win;
+        // const newWin = () => {
+        //     win = window.open('https://developer.mozilla.org');
+        // };
+
+        // const closeWin = () => {
+        //     win.close();
+        // };
+
+        // const badFont = () => {
+        //     win.eval(`document.getElementsByTagName('h1')[0].style.fontFamily = 'Comic Sans MS'`);
+        // };
+
+        // let { webFrame } = require('electron');
+
+        // const zoomUp = () => {
+        //     // webFrame.setZoomFactor(webFrame.getZoomFactor() + 1);
+        //     webFrame.setZoomLevel(webFrame.getZoomLevel() + 1);
+        // };
+
+        // const zoomDown = () => {
+        //     webFrame.setZoomLevel(webFrame.getZoomLevel() - 1);
+        // };
+
+        // const zoomReset = () => {
+        //     webFrame.setZoomLevel(1);
+        // };
+
+        require('./renderer');
+    </script>
 </body>
 </html>
