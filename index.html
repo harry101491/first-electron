@@ -7,16 +7,16 @@
 </head>
 <body>  <!-- style="user-select: none; -webkit-app-region: drag; padding-top: 20px;" -->
     <h1>Hello World!</h1>
-    We are using node
+    <button onclick="onUpper()">Change to UpperCase</button>
+
     <script>
-        require('./renderer')
-        document.write(process.versions.node)
-    </script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-<!-- 
-    <br>
-    <br>
-    <input type="range" name="range" min="0" max="10" style="-webkit-app-region: no-drag;"/> -->
+        const { clipboard } = require('electron');
+
+        const onUpper = (e) => {
+            let cbText = clipboard.readText();
+
+            clipboard.writeText(cbText.toUpperCase());
+        };
+    </script>
 </body>
 </html>
